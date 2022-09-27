@@ -99,3 +99,12 @@ body {
     margin-top: 2em;
     resize: none;
 }
+.weatherAPI {
+    display: flex;
+    flex-direction: column;
+    padding: 1em 2em;
+    border-top: 2px solid #f13d67;
+    flex-grow: 1;
+    background-image: linear-gradient(to right, #FDA45Fff, #F69660ff,#F08760ff,#E97961ff,#E26A61ff,#DC5C62ff, #D54D62ff);
+    font-family: 'Courier New', Courier, monospace;
+}

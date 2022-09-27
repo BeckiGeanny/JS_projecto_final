@@ -56,7 +56,7 @@ export default class NotesView {
     updateNoteList(notes) {
         const notesListContainer = this.root.querySelector(".notes_list");
 
-        // Empty list
+       
         notesListContainer.innerHTML = "";
 
         for (const note of notes) {
@@ -65,7 +65,7 @@ export default class NotesView {
             notesListContainer.insertAdjacentHTML("beforeend", html);
         }
 
-        // Add select/delete events for each list item
+    
         notesListContainer.querySelectorAll(".notes_list-item").forEach(noteListItem => {
             noteListItem.addEventListener("click", () => {
                 this.onNoteSelect(noteListItem.dataset.noteId);
@@ -76,12 +76,11 @@ export default class NotesView {
 
                 if (doDelete) {
                     this.onNoteDelete(noteListItem.dataset.noteId);
-                    //add toastify pop up
                     Toastify({
                         text: "This note was successfully deleted",
-                        duration: 5000,
+                        duration: 7000,
                         style: {
-                            background: "linear-gradient(to right, pink, orange)",
+                            background: "linear-gradient(to right, #D54D62ff, #FDA45Fff)",
                           },
                         }).showToast();
                 }
@@ -104,3 +103,10 @@ export default class NotesView {
         this.root.querySelector(".notes_preview").style.visibility = visible ? "visible" : "hidden";
     }
 }
+fetch('https://api.open-meteo.com/v1/forecast?latitude=34.05&longitude=-118.24&hourly=temperature_2m&current_weather=true')
+.then((response) => response.json())
+.then((data) => {
+    const weatherp = document.getElementById("weather")
+    console.log(data)
+    weatherp.innerText = JSON.stringify(data.current_weather)
+})
